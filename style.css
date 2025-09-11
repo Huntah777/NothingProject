@@ -864,3 +864,99 @@ body {
   white-space: nowrap;
   animation: slideInFromLeft 1.5s ease forwards;
 }
+
+/* Mobile-first responsive grid */
+.grid-container {
+  display: grid;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+/* Individual tiles - responsive sizing */
+.tile {
+  background-color: var(--color-black);
+  transition: background-color 0.02s ease;
+  border: none;
+  margin: 0;
+  padding: 0;
+  min-width: 8px;  /* Minimum tile size for small screens */
+  min-height: 8px;
+}
+
+/* Overlay styling - responsive text */
+.overlay {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--color-text-secondary);
+  font-size: clamp(14px, 4vw, 18px);  /* Responsive font size */
+  font-family: var(--font-family-base);
+  z-index: 10;
+  pointer-events: none;
+  opacity: 0.7;
+  transition: opacity 0.4s ease;
+  text-align: center;
+  padding: 0 16px;
+  max-width: 90vw;
+}
+
+/* Header banner responsive */
+.header-banner {
+  width: 100%;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 10px 0;
+  font-size: clamp(1.5rem, 6vw, 2.5rem);  /* Responsive header */
+  font-family: 'NothingCustomFont';
+  overflow: hidden;
+  white-space: nowrap;
+  animation: slideInFromLeft 1.5s ease forwards;
+}
+
+/* Body - responsive cursor */
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: var(--color-black);
+  cursor: crosshair;
+  touch-action: none;  /* Prevents scrolling on touch devices */
+}
+
+/* Mobile-specific optimizations */
+@media (max-width: 768px) {
+  .tile {
+    min-width: 6px;
+    min-height: 6px;
+  }
+  
+  .overlay {
+    font-size: clamp(12px, 5vw, 16px);
+  }
+  
+  body {
+    cursor: none;  /* Hide cursor on mobile for cleaner experience */
+  }
+}
+
+/* Small mobile phones */
+@media (max-width: 480px) {
+  .tile {
+    min-width: 4px;
+    min-height: 4px;
+  }
+  
+  .header-banner {
+    font-size: clamp(1.2rem, 8vw, 2rem);
+    padding: 8px 0;
+  }
+}
